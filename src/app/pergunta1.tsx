@@ -37,26 +37,27 @@ export default function Pergunta1() {
       {/* Imagem Ilustrativa da Pergunta */}
       <Image source={{ uri: 'https://flaticon.com' }} style={styles.imagem} />
 
-      <Text style={styles.pergunta}>O que significa a sigla HTML?</Text>
+      {/* Pergunta 1 do seu Roteiro sobre a Copa */}
+      <Text style={styles.pergunta}>Qual país sediou a primeira Copa do Mundo da FIFA em 1930?</Text>
       
-      {/* Botão A (Correta) - Passa true para a função */}
-      <TouchableOpacity style={styles.botao} onPress={() => responder(true)}>
-        <Text style={styles.textoBotao}>A) HyperText Markup Language</Text>
+      {/* Botão A (Incorreta) - Passa false para a função */}
+      <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
+        <Text style={styles.textoBotao}>A) Brasil</Text>
       </TouchableOpacity>
       
-      {/* Botão B (Incorreta) - Passa false para a função */}
-      <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
-        <Text style={styles.textoBotao}>B) HighText Machine Language</Text>
+      {/* Botão B (Correta) - Passa true para a função */}
+      <TouchableOpacity style={styles.botao} onPress={() => responder(true)}>
+        <Text style={styles.textoBotao}>B) Uruguai</Text>
       </TouchableOpacity>
 
       {/* Botão C (Incorreta) - Passa false */}
       <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
-        <Text style={styles.textoBotao}>C) Hyperlink and Text Management Language</Text>
+        <Text style={styles.textoBotao}>C) Itália</Text>
       </TouchableOpacity>
 
       {/* Botão D (Incorreta) - Passa false */}
       <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
-        <Text style={styles.textoBotao}>D) Home Tool Markup Language</Text>
+        <Text style={styles.textoBotao}>D) Argentina</Text>
       </TouchableOpacity>
 
       {/* Para as próximas telas de perguntas, vocês vão seguir essa mesma estrutura! */}
@@ -64,19 +65,24 @@ export default function Pergunta1() {
   );
 }
 
-// Estilização da Tela
+// Estilização da Tela adaptada para as cores da Copa e do Brasil
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fdf2f8', padding: 20 },
-  contador: { fontSize: 16, color: '#be185d', fontWeight: 'bold', marginBottom: 20 },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0fdf4', padding: 20 },
+  contador: { fontSize: 16, color: '#166534', fontWeight: 'bold', marginBottom: 20 },
   imagem: { width: 120, height: 120, marginBottom: 20 },
   pergunta: { fontSize: 24, fontWeight: 'bold', marginBottom: 30, textAlign: 'center', color: '#1f2937' },
   botao: { 
-    backgroundColor: '#ec4899', 
+    backgroundColor: '#eab308', 
     padding: 18, 
-    borderRadius: 12, 
+    borderRadius: 30, 
     width: '100%', 
     marginBottom: 15, 
     alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#166534',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
-  textoBotao: { color: '#ffffff', fontSize: 16, fontWeight: 'bold', textAlign: 'center' },
+  textoBotao: { color: '#1e293b', fontSize: 16, fontWeight: 'bold', textAlign: 'center' },
 });

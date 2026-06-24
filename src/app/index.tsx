@@ -33,31 +33,43 @@ const styles = StyleSheet.create({
     flex: 1, // Faz a View ocupar a tela inteira
     justifyContent: 'center', // Centraliza os elementos no meio da tela (vertical)
     alignItems: 'center', // Centraliza os elementos (horizontal)
-    backgroundColor: '#f0f4f8', // Cor do fundo
-    padding: 20
+    backgroundColor: '#f0fdf4', // Fundo verde bem suave (tom de gramado limpo)
+    padding: 24
   },
   titulo: { 
-    fontSize: 32, 
+    fontSize: 40, // Aumentado levemente para dar mais impacto
     fontWeight: 'bold', 
-    marginBottom: 10,
-    color: '#1e293b',
-    textAlign: 'center'
+    marginBottom: 16,
+    color: '#166534', // Verde floresta mais escuro para melhor contraste
+    textAlign: 'center',
+    letterSpacing: 0.5,
   },
   subtitulo: { 
-    fontSize: 18, 
-    marginBottom: 50,
-    color: '#64748b',
-    textAlign: 'center'
+    fontSize: 16, 
+    lineHeight: 24,
+    marginBottom: 60,
+    color: '#334155', // Tom cinza mais legível sobre o fundo verde
+    textAlign: 'center',
+    maxWidth: '85%', // Evita que o texto encoste nas bordas
   },
   botao: { 
-    backgroundColor: '#4f46e5', // Cor azul do botão
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 12, // Deixa as bordas arredondadas
+    backgroundColor: '#eab308', // Amarelo/Dourado Premium
+    paddingVertical: 18,
+    paddingHorizontal: 50,
+    borderRadius: 30, // Botão em formato de pílula (mais moderno)
+    width: '85%', // Ajustado levemente para encaixar melhor em telas menores
+    alignItems: 'center',
+    // Sombra para dar profundidade (funciona em iOS e Android)
+    elevation: 4,
+    shadowColor: '#166534', // Sombra esverdeada para combinar com o fundo
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
   },
   textoBotao: { 
-    color: '#ffffff', // Letra branca
-    fontSize: 18, 
-    fontWeight: 'bold' 
+    color: '#1e293b', // Letra escura no botão claro para dar contraste
+    fontSize: 18, // Aumentado para melhor leitura
+    fontWeight: 'bold',
+    letterSpacing: 1.2, // Letras levemente espaçadas para um ar esportivo
   },
 });

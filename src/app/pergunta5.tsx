@@ -1,11 +1,7 @@
-import { router, useLocalSearchParams } from 'expo-router'; // Importado useLocalSearchParams
+import { router } from 'expo-router';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Pergunta5() {
-  // Captura os parâmetros enviados pela tela anterior (Pergunta 4)
-  const params = useLocalSearchParams();
-  // Converte o valor recebido para número (se for o primeiro, começa em 0)
-  const pontosRecebidos = params.acertos ? Number(params.acertos) : 0;
   
   // ATENÇÃO ALUNOS: Lógica de Pontuação e Navegação!
   // A função abaixo recebe 'true' se o aluno apertou o botão certo, ou 'false' se errou.
@@ -19,13 +15,13 @@ export default function Pergunta5() {
     // Exemplo de como poderia ser a lógica:
     // let pontosAtuais = 0;
     // if (acertou) { pontosAtuais = 1; }
-    // router.push({ pathname: '/pergunta6', params: { acertos: pontosAtuais } });
+    // router.push({ pathname: '/pergunta2', params: { acertos: pontosAtuais } });
     // ========================================
 
-    // Lógica funcional: calcula os novos pontos e envia para a Pergunta 6
-    let pontosAtuais = pontosRecebidos;
+    // Lógica funcional: Inicializa os pontos da Pergunta 1 e envia para a Pergunta 2
+    let pontosAtuais = 0;
     if (acertou) { 
-      pontosAtuais = pontosRecebidos + 1; 
+      pontosAtuais = 1; 
     }
     
     router.push({ 
@@ -41,26 +37,27 @@ export default function Pergunta5() {
       {/* Imagem Ilustrativa da Pergunta */}
       <Image source={{ uri: 'https://flaticon.com' }} style={styles.imagem} />
 
-      <Text style={styles.pergunta}>Qual é o principal foco da linguagem HTML em uma página web?</Text>
+      {/* Pergunta 5 do seu Roteiro sobre a Copa */}
+      <Text style={styles.pergunta}>Qual país é o maior vencedor de Copas do Mundo na Europa, possuindo 4 títulos mundiais ao lado da Alemanha?</Text>
       
       {/* Botão A (Incorreta) - Passa false para a função */}
       <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
-        <Text style={styles.textoBotao}>A) Fazer a estilização visual das cores e bordas.</Text>
+        <Text style={styles.textoBotao}>A) França</Text>
       </TouchableOpacity>
       
       {/* Botão B (Correta) - Passa true para a função */}
       <TouchableOpacity style={styles.botao} onPress={() => responder(true)}>
-        <Text style={styles.textoBotao}>B) Criar a estrutura e o conteúdo da página.</Text>
+        <Text style={styles.textoBotao}>B) Itália</Text>
       </TouchableOpacity>
 
       {/* Botão C (Incorreta) - Passa false */}
       <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
-        <Text style={styles.textoBotao}>C) Adicionar lógica de programação avançada.</Text>
+        <Text style={styles.textoBotao}>C) Inglaterra</Text>
       </TouchableOpacity>
 
       {/* Botão D (Incorreta) - Passa false */}
       <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
-        <Text style={styles.textoBotao}>D) Criar bancos de dados complexos.</Text>
+        <Text style={styles.textoBotao}>D) Espanha</Text>
       </TouchableOpacity>
 
       {/* Para as próximas telas de perguntas, vocês vão seguir essa mesma estrutura! */}
@@ -68,19 +65,24 @@ export default function Pergunta5() {
   );
 }
 
-// Estilização da Tela
+// Estilização da Tela adaptada com uma nova combinação neutra (Rosa Claro e Grafite)
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fdf2f8', padding: 20 },
-  contador: { fontSize: 16, color: '#be185d', fontWeight: 'bold', marginBottom: 20 },
-  imagem: { width: 120, height: 120, marginBottom: 20 }, // Estilo da imagem
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fce7f3', padding: 20 },
+  contador: { fontSize: 16, color: '#9d174d', fontWeight: 'bold', marginBottom: 20 },
+  imagem: { width: 120, height: 120, marginBottom: 20 },
   pergunta: { fontSize: 24, fontWeight: 'bold', marginBottom: 30, textAlign: 'center', color: '#1f2937' },
   botao: { 
-    backgroundColor: '#ec4899', 
+    backgroundColor: '#334155', 
     padding: 18, 
-    borderRadius: 12, 
+    borderRadius: 30, 
     width: '100%', 
     marginBottom: 15, 
     alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#9d174d',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   textoBotao: { color: '#ffffff', fontSize: 16, fontWeight: 'bold', textAlign: 'center' },
 });
