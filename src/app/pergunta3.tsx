@@ -1,0 +1,93 @@
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+// Importa o router para navegar e o useLocalSearchParams para ler os pontos da tela anterior
+import { router, useLocalSearchParams } from 'expo-router';
+
+export default function Pergunta3() {
+  
+  // Pega os pontos que vieram da tela anterior (Pergunta 2)
+  const params = useLocalSearchParams();
+  // Converte os pontos para número, se não encontrar nada, começa com 0
+  const pontosRecebidos = params.acertos ? Number(params.acertos) : 0;
+  
+  // Função que verifica se o aluno acertou e soma no placar
+  const responder = (acertou: boolean) => {
+    
+    // Começa com a pontuação anterior e soma +1 se a resposta estiver correta
+    let pontosAtuais = pontosRecebidos;
+    if (acertou) { 
+      pontosAtuais = pontosRecebidos + 1; 
+    }
+    
+    // Vai para a próxima tela levando a pontuação atualizada
+    router.push({ 
+      pathname: '/pergunta4', 
+      params: { acertos: pontosAtuais } 
+    });
+  };
+
+  return (
+    // Área principal que organiza tudo na tela
+    <View style={styles.container}>
+      
+      {/* Mostra em qual pergunta o aluno está */}
+      <Text style={styles.contador}>Pergunta 3 de 10</Text>
+      
+      {/* Imagem ilustrativa da pergunta */}
+      <Image source={require('../../assets/images/copadomundo2010.png')} style={styles.imagem} />
+
+      {/* Pergunta do roteiro sobre a Copa */}
+      <Text style={styles.pergunta}>Qual seleção conquistou o título da Copa do Mundo de 2010, na África do Sul?</Text>
+      
+      {/* Opções de resposta: se for a correta, passa true, se não, passa false */}
+      <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
+        <Text style={styles.textoBotao}>A) Holanda</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
+        <Text style={styles.textoBotao}>B) Alemanha</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.botao} onPress={() => responder(true)}>
+        <Text style={styles.textoBotao}>C) Espanha</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.botao} onPress={() => responder(false)}>
+        <Text style={styles.textoBotao}>D) França</Text>
+      </TouchableOpacity>
+      
+    </View>
+  );
+}
+
+// Estilos da tela
+const styles = StyleSheet.create({
+  // Fundo e alinhamento central
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#E8F5E9', padding: 20 },
+  
+  // Contador em destaque
+  contador: { fontSize: 24, color: '#000000', fontWeight: 'bold', marginBottom: 20 },
+  
+  // Tamanho e ajuste da imagem
+  imagem: { width: '95%', height: 350, marginBottom: 30, resizeMode: 'contain' },
+  
+  // Texto da pergunta
+  pergunta: { fontSize: 24, fontWeight: 'bold', marginBottom: 40, textAlign: 'center', color: '#1f2937' },
+  
+  // Formato dos botões
+  botao: { 
+    backgroundColor: '#1E3A8A', 
+    padding: 18, 
+    borderRadius: 30, 
+    width: '100%', 
+    marginBottom: 15, 
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#122252',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  
+  // Estilo do texto dentro dos botões
+  textoBotao: { color: '#ffffff', fontSize: 16, fontWeight: 'bold', textAlign: 'center' },
+});
